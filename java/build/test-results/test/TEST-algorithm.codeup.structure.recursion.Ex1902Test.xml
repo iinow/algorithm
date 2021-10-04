@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="algorithm.codeup.structure.recursion.Ex1902Test" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-10-04T11:56:41" hostname="AL01557877.local" time="0.002">
+  <properties/>
+  <testcase name="case1" classname="algorithm.codeup.structure.recursion.Ex1902Test" time="0.002"/>
+  <system-out><![CDATA[1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
