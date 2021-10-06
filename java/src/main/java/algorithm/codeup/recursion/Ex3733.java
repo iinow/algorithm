@@ -1,14 +1,10 @@
 package algorithm.codeup.recursion;
 
-import java.math.BigDecimal;
-import java.util.AbstractMap;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 public class Ex3733 {
 
-    private Map<BigDecimal, BigDecimal> temp = new HashMap<>();
+    private Map<Long, Long> temp = new HashMap<>();
 
     public static void main(String[] args) {
         new Ex3733().solution();
@@ -18,45 +14,47 @@ public class Ex3733 {
         Scanner scanner = new Scanner(System.in);
         String[] inputs = scanner.nextLine().split(" ");
 
-        int start = Integer.parseInt(inputs[0]);
-        int end = Integer.parseInt(inputs[1]);
+        long start = Long.parseLong(inputs[0]);
+        long end = Long.parseLong(inputs[1]);
 
-        Map.Entry<Integer, Integer> entry = new AbstractMap.SimpleEntry<>(0, 0);
-        for(int i = start; i <= end; i++) {
-            int length = recursive(BigDecimal.valueOf(i));
-            if(length > entry.getValue()) {
-                entry = new AbstractMap.SimpleEntry<>(i, length);
+        long[] entry = {0, 0};
+        for(long i = start; i <= end; i++) {
+            long length = recursive(i);
+            if(length > entry[1]) {
+                entry = new long[]{i, length};
             }
         }
 
-        System.out.printf("%d %d%n", entry.getKey(), entry.getValue());
+        System.out.printf("%d %d%n", entry[0], entry[1]);
     }
 
-    public int recursive(BigDecimal value) {
-        if(value.equals(BigDecimal.valueOf(1))) {
+    public long recursive(long value) {
+        if(value == 1) {
             return 1;
         }
 
-        BigDecimal result;
-        if(temp.get(value) !=  null) {
-            result = temp.get(value);
-        } else {
-            result = isOdd(value) ? calculateOdd(value) : calculateEven(value);
-            temp.put(value, result);
+        if(temp.containsKey(value)) {
+            return temp.get(value);
         }
 
-        return recursive(result) + 1;
+        if(isOdd(value)) {
+            temp.put(value, recursive(calculateOdd(value)) + 1);
+        } else {
+            temp.put(value, recursive(calculateEven(value)) + 1);
+        }
+
+        return temp.get(value);
     }
 
-    public boolean isOdd(BigDecimal value) {
-        return value.remainder(BigDecimal.valueOf(2)).equals(BigDecimal.valueOf(1));
+    public boolean isOdd(long value) {
+        return value % 2 == 1;
     }
 
-    public BigDecimal calculateOdd(BigDecimal value) {
-        return value.multiply(BigDecimal.valueOf(3)).add(BigDecimal.valueOf(1));
+    public long calculateOdd(long value) {
+        return (3L * value) + 1;
     }
 
-    public BigDecimal calculateEven(BigDecimal value) {
-        return value.divide(BigDecimal.valueOf(2));
+    public long calculateEven(long value) {
+        return value / 2;
     }
 }
