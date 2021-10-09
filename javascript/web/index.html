@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <script>
+            function onChangeSelect() {
+                console.log($("#select").val())
+            }
+        </script>
+        Hi
+        <select id="select" onchange="onChangeSelect()">
+            <option value="all">전체</option>
+            <option>1반</option>
+            <option>2반</option>
+            <option>기타</option>
+        </select>
+    </body>
+</html>
