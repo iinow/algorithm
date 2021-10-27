@@ -18,6 +18,8 @@ function letterCombinations(digits: string): string[] {
     .split('')
     .map((v) => Number(v))
     .map((v) => phone[v])
+
+  console.log(root)
   if (root.length === 1) {
     return root[0]
   }
