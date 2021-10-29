@@ -1,9 +1,14 @@
-function permute(nums: number[]): number[][] {
+function permuteUnique(nums: number[]): number[][] {
   const res: number[][] = []
+  const temp = new Set<string>()
 
   const recursive = (values: number[], cnums: number[]) => {
     if (values.length === nums.length) {
+      if (temp.has(values.join(''))) {
+        return
+      }
       res.push([...values])
+      temp.add(values.join(''))
       return
     }
 
@@ -21,4 +26,4 @@ function permute(nums: number[]): number[][] {
   return res
 }
 
-console.log(permute([1, 1, 2]))
+console.log(permuteUnique([1, 1, 2]))
