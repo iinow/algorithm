@@ -19,5 +19,6 @@
     "eslint.workingDirectories": ["./"],
     "[typescript]": {
       "editor.formatOnSave": true
-    }
+    },
+    "svn.ignoreMissingSvnWarning": true
   }

@@ -23,7 +23,6 @@ const removeInvalidParentheses = (s: string) => {
       // bfs
       if (cur[i] != '(' && cur[i] != ')') continue
       const ss = cur.slice(0, i) + cur.slice(i + 1) // each string, removed one char all conditions
-      console.log(ss)
       if (!visit.has(ss)) {
         q.push(ss)
         visit.add(ss)
@@ -65,5 +64,5 @@ function invalidParentheses(s: string): boolean {
   return count === 0
 }
 
-console.log(invalidParentheses('()))'))
+// console.log(invalidParentheses('()))'))
 console.log(removeInvalidParentheses('()())()'))
