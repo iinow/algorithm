@@ -2,3 +2,5 @@ javascript/node_modules
 java/build
 java/.gradle
 java/.idea
+java/bin
+java/**/*.class
