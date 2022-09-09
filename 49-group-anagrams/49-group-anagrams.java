@@ -3,51 +3,24 @@ import java.util.List;
 
 class Solution {
     public List<List<String>> groupAnagrams(String[] strs) {
-        List<List<String>> results = new ArrayList<>();
-
-        for (int i = 0; i < strs.length; i++) {
-            String target = strs[i];
-            if (target == null) {
-                continue;
+        Map<String,List<String>> map = new HashMap<>();
+        
+        for(int i=0;i<strs.length;i++){
+            String mask = String.valueOf(getMask(strs[i]));
+            if(!map.containsKey(mask)){
+                map.put(mask,new ArrayList<>());
             }
-
-            List<String> result = new ArrayList<>();
-            result.add(target);
-            strs[i] = null;
-
-            for (int j = i + 1; j < strs.length; j++) {
-                if (j == i) {
-                    continue;
-                }
-                String value = strs[j];
-                if (value == null) {
-                    continue;
-                }
-
-                if (match(target, value)) {
-                    result.add(value);
-                    strs[j] = null;
-                }
-            }
-
-            results.add(result);
+            map.get(mask).add(strs[i]);
         }
-        return results;
+        return new ArrayList<>(map.values());
     }
-
-    private boolean match(final String target, String value) {
-        if (target.length() != value.length()) {
-            return false;
+    private char[] getMask(String s){
+        int n = s.length();
+        char[] count = new char[26];
+        for(int i=0;i<n;i++){
+            char c = s.charAt(i);
+            count[c-'a']++;
         }
-
-        for (int i = 0; i < target.length(); i++) {
-            int find = value.indexOf(target.charAt(i));
-            if (find < 0) {
-                return false;
-            }
-
-            value = value.substring(0, find) + value.substring(find + 1, value.length());
-        }
-        return true;
+        return count;
     }
 }
