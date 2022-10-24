@@ -1,25 +1,6 @@
 import java.util.*;
 
 class Solution {
-//     public int maxLength(List<String> arr) {
-//         return recursive(arr, 0, "");
-//     }
-    
-//     public int recursive(List<String> arr, int index, String s) {
-//         if (Arrays.stream(s.split("")).distinct().count() != s.length()) {
-//             return -1;
-//         }
-        
-//         if (arr.isEmpty()) {
-//             return s.length();
-//         }
-        
-//         int max = Integer.MIN_VALUE;
-//         for (int i = index; i < arr.size(); i++) {
-//             max = Math.max(max, recursive(arr, i + 1, s + arr.get(i)));
-//         }
-//         return max;
-//     }
     int max =0;
     public int maxLength(List<String> arr) {
         backTrack(arr,"",0);
