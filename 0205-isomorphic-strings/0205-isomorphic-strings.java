@@ -3,10 +3,9 @@ class Solution {
         int length = s.length();
         for (int i = 0; i < length; i++) {
             boolean res = s.indexOf(s.substring(i, i + 1)) == t.indexOf(t.substring(i, i + 1));
-            if (res) {
-                continue;
+            if (!res) {
+                return false;
             }
-            return false;
         }
         return true;
     }
