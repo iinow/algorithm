@@ -8,8 +8,8 @@ class Solution {
     }
     
     private boolean recursive(int index, String s, final Set<String> words) {
-        if (mem[index] != null && !mem[index]) {
-            return false;
+        if (mem[index] != null) {
+            return mem[index];
         }
         
         if (s.length() == index) {
