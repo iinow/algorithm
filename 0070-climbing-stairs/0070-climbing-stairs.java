@@ -4,9 +4,9 @@ class Solution {
             return n;
         }
         
-        int a = 3, b = 2;
+        int a = 3, b = 2, temp = 3;
         for (int i = 0; i < n - 3; i++) {
-            int temp = a;
+            temp = a;
             a += b;
             b = temp;
         }
