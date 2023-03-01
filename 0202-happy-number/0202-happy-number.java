@@ -1,23 +1,19 @@
 class Solution {
-    Set<Integer> set = new HashSet<>();
-    
     public boolean isHappy(int n) {
-        while(n != 1) {
-            int res = cal(n);
-            if (set.contains(res)) {
-                return false;
-            } else {
-                set.add(res);
+        Set<Integer> set = new HashSet<>();
+        int sum = 0;
+        while (true) {
+            if (n == 0) {
+                if (sum == 1) return true;
+                if (set.contains(sum)) break;
+                n = sum;
+                set.add(sum);
+                sum = 0;
+                continue;
             }
-            n = res;
+            sum += Math.pow(n % 10, 2);
+            n /= 10;
         }
-        return true;
-    }
-    
-    private int cal(int n) {
-        return Arrays.stream(String.valueOf(n).split(""))
-                .mapToInt(Integer::parseInt)
-                .map(i -> (int) Math.pow(i, 2))
-                .sum();
+        return false;
     }
 }
