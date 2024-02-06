@@ -8,9 +8,7 @@ var arrayPairSum = function(nums) {
     let sum = 0;
 
     for (let i = 0; i < length; i++) {
-        const firstIndex = i * 2;
-        const secondIndex = firstIndex + 1;
-        sum += Math.min(sortedNums[firstIndex], sortedNums[secondIndex]);
+        sum += sortedNums[i * 2];
     }
     return sum;
 };
